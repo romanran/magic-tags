@@ -11,34 +11,34 @@
         $resultDiv.innerText = result;
         if (checkForCtrlV(e)) {
           navigator.clipboard.writeText(result);
-          console.log("copied");
           addMessage("Copied text to clipboard :)");
         }
       }
       function checkForCtrlV(e) {
-        console.log(e);
-        return e.key === "v" && e.ctrlKey && e.ctrlKey;
+        console.log("sadsadsadsad", e);
+        return e.key === "v" && e.ctrlKey;
       }
       function addMessage(message) {
-        const newMessage = document.createElement("div", { class: "message" });
+        const newMessage = document.createElement("div");
         newMessage.innerText = message;
         $messages.appendChild(newMessage);
         setTimeout(() => {
           $messages.removeChild(newMessage);
         }, 2000);
       }
-      window.onload = function () {
-        $resultDiv = document.getElementById("result");
+      window.addEventListener("DOMContentLoaded", () => {
+        const $resultWrap = document.getElementById("resultwrap");
         const tags = document.getElementById("tags");
+        $resultDiv = document.getElementById("result");
         $messages = document.getElementById("messages");
         tags.addEventListener("change", convert);
         tags.addEventListener("keyup", convert);
-        const $resultWrap = document.getElementById("resultwrap");
-        resultWrap.addEventListener("click", function () {
+        console.log("loaded");
+        $resultWrap.addEventListener("click", () => {
           navigator.clipboard.writeText($resultDiv.innerText);
           addMessage("Copied text to clipboard :)");
         });
-      };
+      });
     </script>
     <style>
       body {
@@ -81,9 +81,10 @@
         font-size: 14px;
         font-weight: bold;
       }
-      .message {
-        color: green;
+      .messages {
+        color: rgb(96, 187, 96);
         font-weight: bold;
+        margin-bottom: 10px;
       }
     </style>
   </head>
