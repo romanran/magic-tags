@@ -54,7 +54,12 @@
         font-size: 16px;
       }
       textarea {
+        border-radius: 8px;
         padding: 10px;
+      }
+      textarea:focus {
+        outline: none;
+        border: 2px solid rgb(165, 47, 194);
       }
       .tags {
         max-width: 80vw;
@@ -62,6 +67,7 @@
         background: rgb(65, 65, 68);
         color: inherit;
         margin-bottom: 20px;
+        border-radius: 4px;
       }
       .result-wrap {
         cursor: pointer;
@@ -85,13 +91,22 @@
         color: rgb(96, 187, 96);
         font-weight: bold;
         margin-bottom: 10px;
+        height: 40px;
+        overflow: auto;
       }
     </style>
   </head>
   <body>
     <div class="app">
       <div class="messages" id="messages"></div>
-      <textarea autofocus cols="80" rows="10" class="tags" id="tags"></textarea>
+      <textarea
+        autofocus
+        placeholder="Paste the text here"
+        cols="80"
+        rows="10"
+        class="tags"
+        id="tags"
+      ></textarea>
       <div class="result-wrap" id="resultwrap">
         <span class="result-wrap__info">Click to copy to clipboard.</span>
         <div class="result" id="result"></div>
